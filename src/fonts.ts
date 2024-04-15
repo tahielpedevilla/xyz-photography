@@ -11,15 +11,6 @@ export default createGlobalStyle`
     @font-face {
         font-family: 'Tungsten';
         src: local('Tungsten'), local('Tungsten'),
-        url(${TungstenBoldWoff2}) format('woff2'),
-        url(${TungstenBoldWoff}) format('woff');
-        font-weight: 700;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Tungsten';
-        src: local('Tungsten'), local('Tungsten'),
         url(${TungstenSemiBoldWoff2}) format('woff2'),
         url(${TungstenSemiBoldWoff}) format('woff');
         font-weight: 400;
@@ -27,9 +18,17 @@ export default createGlobalStyle`
     }
 
     @font-face {
+        font-family: 'Tungsten';
+        src: local('Tungsten'), local('Tungsten'),
+        url(${TungstenBoldWoff2}) format('woff2'),
+        url(${TungstenBoldWoff}) format('woff');
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    @font-face {
         font-family: 'Helvetica';
-        src: local('Helvetica'), local('Helvetica'),
-        url(${Helvetica}) format('woff2'),
+        src: local('Helvetica'),
         url(${Helvetica}) format('woff');
         font-weight: 400;
         font-style: normal;
@@ -37,10 +36,9 @@ export default createGlobalStyle`
 
     @font-face {
         font-family: 'Helvetica';
-        src: local('Helvetica'), local('Helvetica'),
-        url(${HelveticaBold}) format('woff2'),
+        src: local('Helvetica'),
         url(${HelveticaBold}) format('woff');
-        font-weight: 700;
+        font-weight: bold;
         font-style: normal;
     }
 `
