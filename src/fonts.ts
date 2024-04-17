@@ -1,13 +1,13 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
-import TungstenBoldWoff from "./assets/fonts/Tungsten-Bold.woff"
-import TungstenBoldWoff2 from "./assets/fonts/Tungsten-Bold.woff2"
-import TungstenSemiBoldWoff from "./assets/fonts/Tungsten-Semibold.woff"
-import TungstenSemiBoldWoff2 from "./assets/fonts/Tungsten-Semibold.woff2"
-import Helvetica from "./assets/fonts/Helvetica.woff"
-import HelveticaBold from "./assets/fonts/Helvetica-Bold.woff"
+import TungstenBoldWoff from "./assets/fonts/Tungsten-Bold.woff";
+import TungstenBoldWoff2 from "./assets/fonts/Tungsten-Bold.woff2";
+import TungstenSemiBoldWoff from "./assets/fonts/Tungsten-Semibold.woff";
+import TungstenSemiBoldWoff2 from "./assets/fonts/Tungsten-Semibold.woff2";
+import Helvetica from "./assets/fonts/Helvetica.woff";
+import HelveticaBold from "./assets/fonts/Helvetica-Bold.woff";
 
-export default createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
     @font-face {
         font-family: 'Tungsten';
         src: local('Tungsten'), local('Tungsten'),
@@ -41,4 +41,4 @@ export default createGlobalStyle`
         font-weight: bold;
         font-style: normal;
     }
-`
+`;
