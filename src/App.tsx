@@ -13,6 +13,5 @@ export const App = () => {
 
 const AppWrapper = styled.main`
   width: 100%;
-  height: auto;
-  position: relative;
+  height: 100vh;
 `;
