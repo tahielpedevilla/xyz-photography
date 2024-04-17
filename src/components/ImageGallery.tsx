@@ -1,11 +1,12 @@
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import styled from "styled-components";
 import { type Slide } from "../types";
 import { SLIDES } from "../slidesData";
-import { getNextImage, getPreviousImage } from "../helpers/swiperHelpers";
 import { SliderContent } from "./SliderContent";
+import { SwiperNavigation } from "./SwiperNavigation";
+import { SwiperFraction } from "./SwiperFraction";
 
 export const ImageGallery = () => {
   return (
@@ -27,89 +28,10 @@ export const ImageGallery = () => {
         </SwiperSlide>
       ))}
       <SwiperNavigation />
-      <SwiperFraction id="fraction" />
+      <SwiperFraction />
     </Swiper>
   );
 };
-
-const SwiperNavigation = () => {
-  const swiper = useSwiper();
-
-  const fraction = document.getElementById("fraction") as HTMLDivElement;
-
-  if (fraction) {
-    fraction.textContent = `${swiper.realIndex + 1} OF ${swiper.slides.length}`;
-  }
-
-  swiper.on("slideChange", () => {
-    const currentIndex = swiper.activeIndex;
-    fraction.textContent = `${swiper.realIndex + 1} OF ${swiper.slides.length}`;
-
-    const previousImage = getPreviousImage(currentIndex);
-    const nextImage = getNextImage(currentIndex);
-
-    const prevButton = document
-      .querySelector("#prevButton")
-      ?.querySelector("img");
-    const nextButton = document
-      .querySelector("#nextButton")
-      ?.querySelector("img");
-
-    if (prevButton) {
-      prevButton.src = previousImage;
-    }
-
-    if (nextButton) {
-      nextButton.src = nextImage;
-    }
-  });
-
-  return (
-    <>
-      <PrevButton onClick={() => swiper.slidePrev()} id="prevButton">
-        <NextPrevImage
-          src={getPreviousImage(swiper.activeIndex)}
-          alt="Previous"
-        />
-      </PrevButton>
-      <NextButton onClick={() => swiper.slideNext()} id="nextButton">
-        <NextPrevImage src={getNextImage(swiper.activeIndex)} alt="Next" />
-      </NextButton>
-    </>
-  );
-};
-
-const NextButton = styled.button`
-  border: none;
-  position: absolute;
-  z-index: 200;
-  cursor: pointer;
-  padding: 0;
-  right: 16px;
-  top: 16px;
-  border: 1px solid #000000;
-  border-radius: 10px;
-  overflow: hidden;
-`;
-
-const PrevButton = styled.button`
-  border: none;
-  position: absolute;
-  z-index: 200;
-  cursor: pointer;
-  padding: 0;
-  left: 16px;
-  bottom: 16px;
-  border: 1px solid #000000;
-  border-radius: 10px;
-  overflow: hidden;
-`;
-
-const NextPrevImage = styled.img`
-  width: 248px;
-  height: 330px;
-  object-fit: cover;
-`;
 
 const BlurredImage = styled.img`
   width: 100%;
@@ -157,16 +79,4 @@ const SmallText = styled.h2`
 
 const RightText = styled(SmallText)`
   align-self: flex-end;
-`;
-
-const SwiperFraction = styled.div`
-  position: absolute;
-  z-index: 200;
-  top: 75%;
-  left: calc(50% - 35px);
-  transform: translate(-50%, -50%);
-  font-family: "Helvetica";
-  font-size: 10px;
-  line-height: 11.5;
-  letter-spacing: 1px;
 `;
