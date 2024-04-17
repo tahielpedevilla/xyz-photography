@@ -1,15 +1,30 @@
 module.exports = {
-	root: true,
-	env: { browser: true, es2020: true },
-	extends: [
-		"eslint:recommended",
-		"plugin:@typescript-eslint/recommended",
-		"plugin:react-hooks/recommended",
+	extends: ["@madebywild/eslint-config-base"],
+	overrides: [
+		{
+			files: ["**/*.ts?(x)"],
+			parser: "@typescript-eslint/parser",
+			plugins: ["@typescript-eslint"],
+			rules: {
+				"no-undef": "off",
+				"@typescript-eslint/no-explicit-any": "warn",
+				"@typescript-eslint/no-empty-function": "warn",
+				"@typescript-eslint/no-unused-vars": [
+					"warn",
+					{
+						ignoreRestSiblings: true,
+						args: "none",
+						varsIgnorePattern: "^_",
+					},
+				],
+				"@typescript-eslint/consistent-type-imports": [
+					"error",
+					{
+						prefer: "type-imports",
+						fixStyle: "inline-type-imports",
+					},
+				],
+			},
+		},
 	],
-	ignorePatterns: ["dist", ".eslintrc.cjs"],
-	parser: "@typescript-eslint/parser",
-	plugins: ["react-refresh"],
-	rules: {
-		"react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
-	},
 }
