@@ -31,11 +31,19 @@ export const ImageGallery = () => {
       " / " +
       swiperRef.current.slides.length;
 
-    gsap.to(swiperRef.current.slides[swiperRef.current.activeIndex], {
-      scale: 1,
-      opacity: 1,
-    });
-
+    // animate the blurred img
+    gsap.from(
+      swiperRef.current.slides[swiperRef.current.activeIndex].querySelector(
+        ".blurred-img",
+      ),
+      {
+        scale: 1.2,
+        filter: "blur(80px)",
+        x: 100,
+        ease: "power3.inOut",
+        duration: 0.9,
+      },
+    );
     // animate the front heading
     gsap.from(
       swiperRef.current.slides[swiperRef.current.activeIndex].querySelector(
@@ -45,6 +53,7 @@ export const ImageGallery = () => {
         scale: 0.8,
         x: 100,
         ease: "power3.inOut",
+        duration: 1,
       },
     );
     // animate the back heading
@@ -56,6 +65,7 @@ export const ImageGallery = () => {
         x: 100,
         scale: 0.8,
         ease: "power3.inOut",
+        duration: 1,
       },
     );
     // animate the about text
@@ -64,19 +74,30 @@ export const ImageGallery = () => {
         "h2",
       ),
       {
+        x: -50,
         scale: 0.8,
         opacity: 0.5,
         ease: "power3.inOut",
+        duration: 1.1,
       },
     );
-
-    //scale the slide down on exit
-    const prev = swiperRef.current.slides[swiperRef.current.previousIndex];
-    gsap.to(prev, { opacity: 0.3, scale: 0.8 });
+    // animate the about link
+    gsap.from(
+      swiperRef.current.slides[swiperRef.current.activeIndex].querySelectorAll(
+        ".about-link",
+      ),
+      {
+        scale: 0.7,
+        opacity: 0.3,
+        ease: "power3.inOut",
+        duration: 1.2,
+      },
+    );
   };
 
   return (
     <Swiper
+      speed={700}
       pagination
       modules={[Pagination]}
       onSwiper={(swiper) => {
@@ -85,10 +106,7 @@ export const ImageGallery = () => {
       onSlideChange={animateOnSlideChange}
     >
       {SLIDES.map((slide: Slide, index: number) => (
-        <SwiperSlide
-          key={index}
-          style={{ height: "100vh", width: "100vw", overflow: "hidden" }}
-        >
+        <SwiperSlide key={index} style={{ height: "100vh", width: "100vw" }}>
           <BlurredImage
             className="blurred-img"
             src={slide.bg}
@@ -100,7 +118,9 @@ export const ImageGallery = () => {
               {slide.author} <br /> for {slide.brand}
             </SmallText>
             <RightText>{slide.date}</RightText>
-            <ButtonWhite href={slide.href}>Have a look</ButtonWhite>
+            <ButtonWhite className="about-link" href={slide.href}>
+              Have a look
+            </ButtonWhite>
           </AboutBlock>
         </SwiperSlide>
       ))}
@@ -134,6 +154,11 @@ const ButtonWhite = styled.a`
   color: #202020;
   font-size: 10px;
   text-decoration: none;
+  transition: scale ease-out 400ms;
+
+  &:hover {
+    scale: 1.05;
+  }
 `;
 
 const AboutBlock = styled.aside`
