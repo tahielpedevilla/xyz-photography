@@ -1,5 +1,6 @@
-import styled from "styled-components";
 import { useSwiper } from "swiper/react";
+import styled from "styled-components";
+import gsap from "gsap";
 import { getNextImage, getPreviousImage } from "../helpers/swiperHelpers";
 
 export const SwiperNavigation = () => {
@@ -12,11 +13,43 @@ export const SwiperNavigation = () => {
     const nextImage = getNextImage(currentIndex);
 
     const prevButton = document
-      .querySelector("#prevButton")
+      .querySelector("#prev-button")
       ?.querySelector("img");
     const nextButton = document
-      .querySelector("#nextButton")
+      .querySelector("#next-button")
       ?.querySelector("img");
+
+    gsap.fromTo(
+      "#prev-button img",
+      {
+        y: 5,
+        scale: 1.05,
+        duration: 1.1,
+        ease: "power2",
+      },
+      {
+        y: 0,
+        scale: 1,
+        duration: 1.1,
+        ease: "power2",
+      },
+    );
+
+    gsap.fromTo(
+      "#next-button img",
+      {
+        y: -5,
+        scale: 1.05,
+        duration: 1.1,
+        ease: "power2",
+      },
+      {
+        y: 0,
+        scale: 1,
+        duration: 1.1,
+        ease: "power2",
+      },
+    );
 
     if (prevButton) {
       prevButton.src = previousImage;
@@ -29,13 +62,13 @@ export const SwiperNavigation = () => {
 
   return (
     <>
-      <PrevButton onClick={() => swiper.slidePrev()} id="prevButton">
+      <PrevButton onClick={() => swiper.slidePrev()} id="prev-button">
         <NextPrevImage
           src={getPreviousImage(swiper.activeIndex)}
           alt="Previous"
         />
       </PrevButton>
-      <NextButton onClick={() => swiper.slideNext()} id="nextButton">
+      <NextButton onClick={() => swiper.slideNext()} id="next-button">
         <NextPrevImage src={getNextImage(swiper.activeIndex)} alt="Next" />
       </NextButton>
     </>
