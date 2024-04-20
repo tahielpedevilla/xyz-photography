@@ -67,3 +67,7 @@ h6 {
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
   background-color: #ffffff;
 }
+
+.swiper-wrapper {
+  --swiper-wrapper-transition-timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96);
+}
