@@ -155,10 +155,6 @@ const ButtonWhite = styled.a`
   font-size: 10px;
   text-decoration: none;
   transition: scale ease-out 400ms;
-
-  &:hover {
-    scale: 1.05;
-  }
 `;
 
 const AboutBlock = styled.aside`
