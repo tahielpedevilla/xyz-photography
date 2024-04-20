@@ -13,24 +13,7 @@ import { SwiperFraction } from "./SwiperFraction";
 export const ImageGallery = () => {
   const swiperRef: any = useRef();
 
-  const currentSlide = document.querySelector("#currentSlide") as HTMLElement;
-
-  if (swiperRef.current && swiperRef.current.slides) {
-    currentSlide.textContent =
-      swiperRef.current.activeIndex +
-      1 +
-      " / " +
-      swiperRef.current.slides.length;
-  }
-
   const animateOnSlideChange = () => {
-    const currentSlide = document.querySelector("#currentSlide") as HTMLElement;
-    currentSlide.textContent =
-      swiperRef.current.activeIndex +
-      1 +
-      " / " +
-      swiperRef.current.slides.length;
-
     // animate the blurred img
     gsap.from(
       swiperRef.current.slides[swiperRef.current.activeIndex].querySelector(

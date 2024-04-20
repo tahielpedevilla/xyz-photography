@@ -1,7 +1,28 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useSwiper } from "swiper/react";
 
 export const SwiperFraction = () => {
-  return <FractionText id="currentSlide"></FractionText>;
+  const swiper = useSwiper();
+  const [fractionText, setFractionText] = useState("");
+
+  useEffect(() => {
+    const updateFractionText = () => {
+      if (swiper && swiper.slides) {
+        const text = `${swiper.realIndex + 1} OF ${swiper.slides.length}`;
+        setFractionText(text);
+      }
+    };
+
+    swiper.on("slideChange", updateFractionText);
+    updateFractionText();
+
+    return () => {
+      swiper.off("slideChange", updateFractionText);
+    };
+  }, [swiper]);
+
+  return <FractionText>{fractionText}</FractionText>;
 };
 
 const FractionText = styled.span`
