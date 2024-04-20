@@ -71,7 +71,7 @@ export function CustomCursor() {
   );
 }
 
-const Cursor = styled.svg`
+const Cursor = styled.div`
   position: fixed;
   top: -16px;
   left: -16px;
