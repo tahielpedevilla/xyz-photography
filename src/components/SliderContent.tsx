@@ -6,10 +6,10 @@ export const SliderContent = (props: Slide) => {
   return (
     <Content>
       <ImageWrapper>
-        <FrontHeading>{props.title}</FrontHeading>
+        <FrontHeading className="front-heading">{props.title}</FrontHeading>
         <MainImage src={props.image} alt={props.title} />
       </ImageWrapper>
-      <BackHeading>{props.title}</BackHeading>
+      <BackHeading className="back-heading">{props.title}</BackHeading>
     </Content>
   );
 };

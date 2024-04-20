@@ -2,6 +2,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import styled from "styled-components";
+import gsap from "gsap";
+import { useRef } from "react";
 import { type Slide } from "../types";
 import { SLIDES } from "../slidesData";
 import { SliderContent } from "./SliderContent";
@@ -9,14 +11,89 @@ import { SwiperNavigation } from "./SwiperNavigation";
 import { SwiperFraction } from "./SwiperFraction";
 
 export const ImageGallery = () => {
+  const swiperRef: any = useRef();
+
+  const currentSlide = document.querySelector("#currentSlide") as HTMLElement;
+
+  if (swiperRef.current && swiperRef.current.slides) {
+    currentSlide.textContent =
+      swiperRef.current.activeIndex +
+      1 +
+      " / " +
+      swiperRef.current.slides.length;
+  }
+
+  const animateOnSlideChange = () => {
+    const currentSlide = document.querySelector("#currentSlide") as HTMLElement;
+    currentSlide.textContent =
+      swiperRef.current.activeIndex +
+      1 +
+      " / " +
+      swiperRef.current.slides.length;
+
+    gsap.to(swiperRef.current.slides[swiperRef.current.activeIndex], {
+      scale: 1,
+      opacity: 1,
+    });
+
+    // animate the front heading
+    gsap.from(
+      swiperRef.current.slides[swiperRef.current.activeIndex].querySelector(
+        ".front-heading",
+      ),
+      {
+        scale: 0.8,
+        x: 100,
+        ease: "power3.inOut",
+      },
+    );
+    // animate the back heading
+    gsap.from(
+      swiperRef.current.slides[swiperRef.current.activeIndex].querySelector(
+        ".back-heading",
+      ),
+      {
+        x: 100,
+        scale: 0.8,
+        ease: "power3.inOut",
+      },
+    );
+    // animate the about text
+    gsap.from(
+      swiperRef.current.slides[swiperRef.current.activeIndex].querySelectorAll(
+        "h2",
+      ),
+      {
+        scale: 0.8,
+        opacity: 0.5,
+        ease: "power3.inOut",
+      },
+    );
+
+    //scale the slide down on exit
+    const prev = swiperRef.current.slides[swiperRef.current.previousIndex];
+    gsap.to(prev, { opacity: 0.3, scale: 0.8 });
+  };
+
   return (
-    <Swiper pagination modules={[Pagination]}>
+    <Swiper
+      pagination
+      modules={[Pagination]}
+      onSwiper={(swiper) => {
+        swiperRef.current = swiper;
+      }}
+      onSlideChange={animateOnSlideChange}
+    >
       {SLIDES.map((slide: Slide, index: number) => (
         <SwiperSlide
           key={index}
           style={{ height: "100vh", width: "100vw", overflow: "hidden" }}
         >
-          <BlurredImage src={slide.bg} alt="image" />
+          <BlurredImage
+            className="blurred-img"
+            src={slide.bg}
+            alt={"blurred" + slide.title + "by" + slide.author}
+          />
           <SliderContent title={slide.title} image={slide.image} />
           <AboutBlock>
             <SmallText>
