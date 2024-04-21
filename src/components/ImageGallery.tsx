@@ -1,6 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-import "swiper/css";
 import styled from "styled-components";
 import gsap from "gsap";
 import { useRef } from "react";
@@ -9,6 +8,7 @@ import { SLIDES } from "../slidesData";
 import { SliderContent } from "./SliderContent";
 import { SwiperNavigation } from "./SwiperNavigation";
 import { SwiperFraction } from "./SwiperFraction";
+import "swiper/css";
 
 export const ImageGallery = () => {
   const swiperRef: any = useRef();

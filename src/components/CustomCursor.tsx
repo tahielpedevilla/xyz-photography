@@ -3,7 +3,7 @@ import gsap from "gsap";
 import styled from "styled-components";
 
 export function CustomCursor() {
-  const cursorRef = useRef<SVGElement>(null);
+  const cursorRef = useRef(null);
   const [progress, setProgress] = useState<number>(100);
 
   const isTouchDevice = "ontouchstart" in window;
@@ -52,7 +52,6 @@ export function CustomCursor() {
       aria-valuemax={100}
       aria-valuemin={0}
       aria-valuenow={progress}
-      role="progressbar"
       ref={cursorRef}
     >
       <svg viewBox="0 0 100 100">
