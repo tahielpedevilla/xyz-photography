@@ -7,7 +7,7 @@ export const SliderContent = (props: Slide) => {
     <Content>
       <ImageWrapper>
         <FrontHeading className="front-heading">{props.title}</FrontHeading>
-        <MainImage src={props.image} alt={props.title} />
+        <MainImage className="main-img" src={props.image} alt={props.title} />
       </ImageWrapper>
       <BackHeading className="back-heading">{props.title}</BackHeading>
     </Content>

@@ -22,7 +22,7 @@ export const ImageGallery = () => {
         ".blurred-img",
       ),
       {
-        scale: 1.2,
+        scale: 0.8,
         filter: "blur(80px)",
         x: 100,
         ease: "power3.inOut",
@@ -38,7 +38,7 @@ export const ImageGallery = () => {
         scale: 0.8,
         x: 100,
         ease: "power3.inOut",
-        duration: 1,
+        duration: 1.2,
       },
     );
     // animate the back heading
@@ -50,7 +50,7 @@ export const ImageGallery = () => {
         x: 100,
         scale: 0.8,
         ease: "power3.inOut",
-        duration: 1,
+        duration: 1.2,
       },
     );
     // animate the about text
@@ -63,7 +63,7 @@ export const ImageGallery = () => {
         scale: 0.8,
         opacity: 0.5,
         ease: "power3.inOut",
-        duration: 1.1,
+        duration: 1.2,
       },
     );
     // animate the about link
@@ -75,7 +75,7 @@ export const ImageGallery = () => {
         scale: 0.7,
         opacity: 0.3,
         ease: "power3.inOut",
-        duration: 1.2,
+        duration: 1.3,
       },
     );
   };

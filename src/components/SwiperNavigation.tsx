@@ -23,15 +23,15 @@ export const SwiperNavigation = () => {
       "#prev-button img",
       {
         y: 5,
-        scale: 1.05,
+        scale: 1.02,
         duration: 1.1,
-        ease: "power2",
+        ease: "power4.inOut",
       },
       {
         y: 0,
         scale: 1,
         duration: 1.1,
-        ease: "power2",
+        ease: "power4.inOut",
       },
     );
 
@@ -39,15 +39,15 @@ export const SwiperNavigation = () => {
       "#next-button img",
       {
         y: -5,
-        scale: 1.05,
+        scale: 1.02,
         duration: 1.1,
-        ease: "power2",
+        ease: "power4.inOut",
       },
       {
         y: 0,
         scale: 1,
         duration: 1.1,
-        ease: "power2",
+        ease: "power4.inOut",
       },
     );
 
