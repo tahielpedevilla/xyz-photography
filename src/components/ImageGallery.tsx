@@ -1,17 +1,19 @@
+import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import styled from "styled-components";
 import gsap from "gsap";
-import { useRef } from "react";
 import { type Slide } from "../types";
 import { SLIDES } from "../slidesData";
 import { SliderContent } from "./SliderContent";
 import { SwiperNavigation } from "./SwiperNavigation";
 import { SwiperFraction } from "./SwiperFraction";
+import { CustomCursor } from "./CustomCursor";
 import "swiper/css";
 
 export const ImageGallery = () => {
   const swiperRef: any = useRef();
+  const [slideProgress, setSlideProgress] = useState(0);
 
   const animateOnSlideChange = () => {
     // animate the blurred img
@@ -78,16 +80,26 @@ export const ImageGallery = () => {
     );
   };
 
+  const updateSlideProgress = () => {
+    const progress =
+      (swiperRef.current.activeIndex / (SLIDES.length - 1)) * 100;
+    setSlideProgress(progress);
+  };
+
   return (
     <Swiper
-      speed={700}
+      speed={800}
       pagination
       modules={[Pagination]}
       onSwiper={(swiper) => {
         swiperRef.current = swiper;
       }}
-      onSlideChange={animateOnSlideChange}
+      onSlideChange={() => {
+        animateOnSlideChange();
+        updateSlideProgress();
+      }}
     >
+      <CustomCursor progress={slideProgress} />
       {SLIDES.map((slide: Slide, index: number) => (
         <SwiperSlide key={index} style={{ height: "100vh", width: "100vw" }}>
           <BlurredImage

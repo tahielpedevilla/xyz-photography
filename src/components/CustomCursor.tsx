@@ -1,10 +1,13 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import styled from "styled-components";
 
-export function CustomCursor() {
+interface CustomCursorProps {
+  progress: number;
+}
+
+export function CustomCursor(props: CustomCursorProps) {
   const cursorRef = useRef(null);
-  const [progress, setProgress] = useState<number>(100);
 
   const isTouchDevice = "ontouchstart" in window;
 
@@ -51,7 +54,7 @@ export function CustomCursor() {
     <Cursor
       aria-valuemax={100}
       aria-valuemin={0}
-      aria-valuenow={progress}
+      aria-valuenow={props.progress}
       ref={cursorRef}
     >
       <svg viewBox="0 0 100 100">
@@ -62,7 +65,7 @@ export function CustomCursor() {
           r="42"
           strokeWidth="1px"
           strokeDashoffset="66"
-          strokeDasharray={calculateDashArray(progress)}
+          strokeDasharray={calculateDashArray(props.progress)}
         />
       </svg>
       <CursorDot />
