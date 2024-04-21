@@ -22,15 +22,13 @@ export const SwiperNavigation = () => {
     gsap.fromTo(
       "#prev-button img",
       {
-        y: 5,
-        scale: 1.02,
-        duration: 1.1,
+        scale: 1.07,
+        duration: 1.3,
         ease: "power4.inOut",
       },
       {
-        y: 0,
         scale: 1,
-        duration: 1.1,
+        duration: 1.3,
         ease: "power4.inOut",
       },
     );
@@ -38,15 +36,13 @@ export const SwiperNavigation = () => {
     gsap.fromTo(
       "#next-button img",
       {
-        y: -5,
-        scale: 1.02,
-        duration: 1.1,
+        scale: 1.07,
+        duration: 1.3,
         ease: "power4.inOut",
       },
       {
-        y: 0,
         scale: 1,
-        duration: 1.1,
+        duration: 1.3,
         ease: "power4.inOut",
       },
     );

@@ -63,7 +63,7 @@ export const ImageGallery = () => {
         scale: 0.8,
         opacity: 0.5,
         ease: "power3.inOut",
-        duration: 1.2,
+        duration: 1.3,
       },
     );
     // animate the about link
@@ -75,7 +75,7 @@ export const ImageGallery = () => {
         scale: 0.7,
         opacity: 0.3,
         ease: "power3.inOut",
-        duration: 1.3,
+        duration: 1.4,
       },
     );
   };
