@@ -145,6 +145,7 @@ const ButtonWhite = styled.a`
   line-height: 12px;
   letter-spacing: 1px;
   text-transform: uppercase;
+  white-space: nowrap;
   font-weight: bold;
   color: #202020;
   font-size: 10px;
