@@ -41,6 +41,7 @@ const MainImage = styled.img`
   width: 100%;
   height: 100%;
   position: absolute;
+  user-select: none;
 `;
 
 const HeroHeading = styled.span`
@@ -57,6 +58,7 @@ const HeroHeading = styled.span`
   align-items: center;
   justify-content: center;
   width: 11ch;
+  user-select: none;
 `;
 
 const BackHeading = styled(HeroHeading)`

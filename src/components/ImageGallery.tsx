@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Mousewheel, Pagination } from "swiper/modules";
 import styled from "styled-components";
 import gsap from "gsap";
 import { type Slide } from "../types";
@@ -90,7 +90,9 @@ export const ImageGallery = () => {
     <Swiper
       speed={800}
       pagination
-      modules={[Pagination]}
+      modules={[Pagination, Mousewheel]}
+      mousewheel
+      simulateTouch={false}
       onSwiper={(swiper) => {
         swiperRef.current = swiper;
       }}
