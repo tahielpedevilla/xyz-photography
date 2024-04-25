@@ -88,7 +88,6 @@ const PrevButton = styled.button`
   border: none;
   position: absolute;
   z-index: 200;
-  cursor: pointer;
   padding: 0;
   left: 16px;
   bottom: 16px;
